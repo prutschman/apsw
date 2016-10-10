@@ -4167,6 +4167,8 @@ class APSW(unittest.TestCase):
 
         vfs=ObfuscatedVFS()
 
+        self.assertTrue(vfs.hasattr('xShm') or not apsw.VFS().hasattr('xShm'))
+
         query="create table foo(x,y); insert into foo values(1,2); insert into foo values(3,4)"
         self.db.cursor().execute(query)
 
